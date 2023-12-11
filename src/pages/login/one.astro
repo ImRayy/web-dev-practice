@@ -1,0 +1,100 @@
+---
+import Wave from "@components/login/variant1/wave.astro";
+import FluentMail from "@components/icons/FluentMail.astro";
+import Eye from "@components/icons/Eye.astro";
+import Contacts from "@components/icons/Contacts.astro";
+---
+
+<div
+  class="text flex min-h-screen w-full items-center justify-center bg-black xl:hidden"
+>
+  <p
+    class="font-Rubik bg-gradient-to-r from-indigo-500 via-purple-500 to-pink-500 bg-clip-text text-4xl font-extrabold text-transparent"
+  >
+    View In Wide Screen
+  </p>
+</div>
+<div
+  class="main-div font-Rubik relative hidden min-h-screen w-full items-center justify-center overflow-hidden bg-purple-100 text-white xl:flex"
+>
+  <div class="8/12 relative z-10 hidden min-h-screen bg-[#09090A] xl:flex">
+    <dir class="mt-0 flex w-full flex-col justify-between py-10">
+      <div>
+        <div class="inline-flex w-full items-center justify-between">
+          <h3 class="inline-flex whitespace-nowrap text-2xl font-bold">
+            Voyage ease
+            <p class="text-[#F3AC8C]">.</p>
+          </h3>
+          <ul class="inline-flex justify-evenly gap-28">
+            <li class="text-xl font-bold text-gray-400">Home</li>
+            <li class="text-xl font-bold text-gray-400">Join</li>
+          </ul>
+        </div>
+      </div>
+      <div class="mb-32 ml-32 flex w-[30rem] flex-col gap-5">
+        <div class="mb-6 flex flex-col gap-6">
+          <p class="text-2xl font-bold text-gray-400">Start for free</p>
+          <h3 class="inline-flex text-5xl font-bold">
+            Create New Account <p class="text-[#F3AC8C]">.</p>
+          </h3>
+          <p class="text-xl font-medium text-gray-300">
+            Aready a member?
+            <a href="#" class="text-[#F3AC8C]">Login</a>
+          </p>
+        </div>
+        <div class="flex gap-5">
+          <span class="relative inline-flex w-full items-center">
+            <input
+              type="text"
+              placeholder="First Name"
+              class="h-14 w-full rounded-xl bg-white/80 px-4 placeholder:text-gray-700"
+            />
+            <Contacts class="absolute right-4 text-2xl" />
+          </span>
+          <span class="relative inline-flex w-full items-center">
+            <input
+              type="text"
+              placeholder="Lastname"
+              class="h-14 w-full rounded-xl bg-white/80 px-4 placeholder:text-gray-700"
+            />
+            <Contacts class="absolute right-4 text-2xl" />
+          </span>
+        </div>
+        <span class="relative inline-flex w-full items-center">
+          <input
+            type="email"
+            placeholder="yourname@example.com"
+            class="h-14 w-full rounded-xl bg-white/80 px-4 placeholder:text-gray-700"
+          />
+          <FluentMail class="absolute right-4 text-2xl" />
+        </span>
+        <span class="relative inline-flex w-full items-center">
+          <input
+            type="password"
+            placeholder="Enter you password"
+            class="h-14 w-full rounded-xl bg-white/80 px-4 placeholder:text-gray-700"
+          />
+          <Eye class="absolute right-4 text-2xl" />
+        </span>
+        <div class="mt-10 inline-flex gap-5">
+          <button
+            class="h-14 w-full rounded-full bg-[#BDA199] text-sm font-bold text-black/70"
+            >Change Method</button
+          >
+          <button
+            class="h-14 w-full rounded-full bg-[#F3AC8C] text-sm font-bold text-[#482318] shadow-lg shadow-[#7B5048]"
+            >Create Account</button
+          >
+        </div>
+      </div>
+    </dir>
+    <Wave class="absolute left-full top-0 min-h-screen" />
+  </div>
+  <div class="min-h-screen w-full overflow-hidden bg-black">
+    <img
+      src="https://images.unsplash.com/photo-1510784722466-f2aa9c52fff6?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
+      alt="baloons"
+      class="absolute right-0 top-0 h-full"
+    />
+  </div>
+</div>

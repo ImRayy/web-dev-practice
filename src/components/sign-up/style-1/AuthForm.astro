@@ -1,0 +1,45 @@
+---
+import Contacts from "@components/icons/Contacts.astro";
+import Eye from "@components/icons/Eye.astro";
+import FluentMail from "@components/icons/FluentMail.astro";
+import Input from "@components/ui/Input";
+---
+
+<div class="mb-6 flex flex-col gap-6">
+  <p class="text-2xl font-bold text-gray-400">Start for free</p>
+  <h3 class="inline-flex text-5xl font-bold">
+    Create New Account <p class="text-[#F3AC8C]">.</p>
+  </h3>
+  <p class="text-xl font-medium text-gray-300">
+    Aready a member?
+    <a href="#" class="text-[#F3AC8C]">Login</a>
+  </p>
+</div>
+<div class="flex gap-5">
+  <span class="relative inline-flex w-full items-center">
+    <Input type="text" placeholder="First Name" />
+    <Contacts class="absolute right-4 text-2xl" />
+  </span>
+  <span class="relative inline-flex w-full items-center">
+    <Input type="text" placeholder="Last Lame" />
+    <Contacts class="absolute right-4 text-2xl" />
+  </span>
+</div>
+<span class="relative inline-flex w-full items-center">
+  <Input type="email" placeholder="yourname@example.com" />
+  <FluentMail class="absolute right-4 text-2xl" />
+</span>
+<span class="relative inline-flex w-full items-center">
+  <Input type="password" placeholder="Enter your password.." />
+  <Eye class="absolute right-4 text-2xl" />
+</span>
+<div class="mt-10 inline-flex gap-5">
+  <button
+    class="h-14 w-full rounded-full bg-[#BDA199]/90 text-sm font-bold text-black/70 transition-colors duration-300 hover:bg-[#BDA199] active:scale-95"
+    >Change Method</button
+  >
+  <button
+    class="h-14 w-full rounded-full bg-[#F3AC8C]/90 text-sm font-bold text-[#482318] shadow-lg shadow-[#7B5048] transition-colors duration-300 hover:bg-[#F3AC8C] active:scale-95"
+    >Create Account</button
+  >
+</div>

@@ -1,0 +1,42 @@
+---
+import TwoToneComputer from "@components/icons/TwoToneComputer.astro";
+import CircleScatter from "@components/svgs/CircleScatter.astro";
+import BlogScatter from "@components/svgs/BlobScatter.astro";
+---
+
+<div class="div-container flex items-center overflow-hidden bg-black xl:hidden">
+  <div
+    class="div-container absolute flex w-full items-center overflow-hidden bg-black"
+  >
+    <CircleScatter className="md:hidden" />
+    <!-- <div class=""> -->
+    <BlogScatter className="hidden md:block" />
+    <!-- </div> -->
+  </div>
+  <div
+    class="div-container z-10 flex min-h-screen flex-col items-center justify-center gap-3 backdrop-blur-2xl"
+  >
+    <TwoToneComputer class="text-7xl text-amber-500" />
+    <p
+      class="bg-gradient-to-t from-orange-500 to-yellow-300 bg-clip-text px-6 text-center font-Rubik text-4xl font-extrabold leading-10 text-transparent"
+    >
+      VIEW ON WIDE SCREEN DEVICE
+    </p>
+  </div>
+</div>
+<style>
+  .div-container {
+    height: 100vh;
+    width: 100vw;
+    height: calc(var(--vh, 1vh) * 100);
+  }
+</style>
+
+<script is:inline>
+  function setHeight() {
+    let vh = window.innerHeight * 0.01;
+    document.documentElement.style.setProperty("--vh", `${vh}px`);
+  }
+  setHeight();
+  window.addEventListener("resize", () => setHeight);
+</script>

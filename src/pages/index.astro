@@ -10,7 +10,13 @@
     <meta name="generator" content={Astro.generator} />
     <title>Astro</title>
   </head>
-  <body>
-    <h1>Astro</h1>
+  <body class="bg-zinc-900">
+    <div class="flex min-h-screen w-full items-center justify-center">
+      <div id="box" class="h-32 w-32 rounded-xl bg-pink-400"></div>
+    </div>
   </body>
+  <script>
+    import { gsap } from "gsap";
+    gsap.fromTo("#box", { x: "-100%", rotate: 0 }, { x: 0, rotate: 90 });
+  </script>
 </html>

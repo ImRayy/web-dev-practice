@@ -38,9 +38,9 @@ import { images } from "@utils/imageLinks";
               title={images[i]?.title ?? ""}
               subTitle={images[i]?.subTitle ?? ""}
               image={images[i]?.image ?? ""}
-              className={`${
+              className={`card ${
                 i === 0 ? "col-span-3 text-black" : "col-span-2"
-              } row-span-4 w-80 snap-center  shadow-black md:w-full md:shadow-lg`}
+              } row-span-4 w-80 snap-center  md:w-full `}
             />
           ))
         }
@@ -54,11 +54,10 @@ import { images } from "@utils/imageLinks";
               title={images[i]?.title ?? ""}
               subTitle={images[i]?.subTitle ?? ""}
               image={images[i]?.image ?? ""}
-              className={`   
-          ${i === 3 && "text-black"}
-          ${i === 4 ? "col-span-3 row-span-4" : "col-span-2 row-span-2"}
-          w-80  snap-center shadow-lg md:w-full md:shadow-black
-          `}
+              className={`card 
+            ${i === 3 && "text-black"}
+            ${i === 4 ? "col-span-3 row-span-4" : "col-span-2 row-span-2"}
+            `}
             />
           ))
         }
@@ -86,6 +85,7 @@ import { images } from "@utils/imageLinks";
   </div>
 </BaseLayout>
 <script>
+  import { gsap } from "gsap";
   const btnLeft = document.getElementById("slideLeft");
   const btnRight = document.getElementById("slideRight");
   const container = document.getElementById("gridContainer");
@@ -100,4 +100,7 @@ import { images } from "@utils/imageLinks";
       container.scrollBy({ left: 300, behavior: "smooth" });
     }
   });
+
+  // animate(
+  gsap.fromTo(".card", { x: "-100%", duration: 0.8 }, { x: 0, duration: 0.8 });
 </script>

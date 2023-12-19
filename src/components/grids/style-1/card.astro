@@ -1,0 +1,39 @@
+---
+export interface Props {
+  title: string;
+  subTitle: string;
+  image: string;
+  width?: number;
+  height?: number;
+  className?: string;
+  fontSize?: number;
+}
+
+const {
+  title,
+  subTitle,
+  image,
+  width,
+  height,
+  className,
+  fontSize = 18,
+} = Astro.props;
+---
+
+<div
+  class={` relative px-2 min-h-10 h-full overflow-hidden rounded-xl bg-gray-300 ${
+    typeof width === undefined && "w-full"
+  } ${className}`}
+  style={{
+    background: `url(${image}) no-repeat center center/cover`,
+    width: `${width}px`,
+    height: `${height}px`,
+  }}
+>
+  <div class="flex flex-col pl-5 pt-5">
+    <p style={{ fontSize: `${fontSize - 4}px` }} class="uppercase">
+      {subTitle}
+    </p>
+    <h3 style={{ fontSize: `${fontSize}px` }} class="font-bold">{title}</h3>
+  </div>
+</div>

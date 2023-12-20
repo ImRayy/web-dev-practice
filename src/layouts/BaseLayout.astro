@@ -5,7 +5,19 @@ export interface Props {
 const { title = "Ray's Hold" } = Astro.props;
 ---
 
-<html lang="en" class={`scroll-pt-10 scroll-smooth select-none`}>
+<!-- <style>
+  html {
+    height: -webkit-fll-available;
+  }
+  body {
+    height: -webkit-fill-available;
+  }
+</style> -->
+<html
+  lang="en"
+  class={`scroll-pt-10 scroll-smooth select-none`}
+  style={{ height: "100%" }}
+>
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width" />
@@ -13,19 +25,16 @@ const { title = "Ray's Hold" } = Astro.props;
     <meta property="og:title" content={title} />
   </head>
   <body>
-    <main
-      class="flex justify-center"
-      style={{ height: "calc(var(--vh, 1vh) * 100)" }}
-    >
+    <main class="flex justify-center" style={{ height: "100%" }}>
       <slot />
     </main>
   </body>
   <script>
-    function setHeight() {
-      let vh = window.innerHeight * 0.01;
-      document.documentElement.style.setProperty("--vh", `${vh}px`);
-    }
+    const setHeight = () => {
+      const currentHeight = window.innerHeight;
+      document.body.style.height = `${currentHeight}px`;
+    };
+    window.addEventListener("resize", setHeight);
     setHeight();
-    window.addEventListener("resize", () => setHeight);
   </script>
 </html>

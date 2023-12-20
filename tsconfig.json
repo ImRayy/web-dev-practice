@@ -5,7 +5,7 @@
     "strict": true,
     "isolatedModules": true,
     "strictNullChecks": true,
-    "baseUrl": "/home/ray/GitHub/webprojects/Practice",
+    "baseUrl": ".",
     "paths": {
       "@components/*": ["src/components/*"],
       "@layouts/*": ["src/layouts/*"],

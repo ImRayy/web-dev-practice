@@ -2,6 +2,8 @@
 import ChevronRight from "@components/icons/ChevronRight.astro";
 import Feather from "@components/icons/Feather.astro";
 import BaseLayout from "@layouts/BaseLayout.astro";
+import ThreeLineMenu from "@components/icons/ThreeLineMenu.astro";
+import X from "@components/icons/X.astro";
 const navLinks = ["Home", "Post", "About", "Contact"];
 ---
 
@@ -14,44 +16,66 @@ const navLinks = ["Home", "Post", "About", "Contact"];
     }}
   >
     <div
-      class="flex h-full justify-center bg-black/40 px-16 py-16 text-white backdrop-blur-3xl"
+      class="relative flex h-full justify-center bg-black/40 px-10 py-16 text-white backdrop-blur-3xl md:px-16"
     >
+      <div class="absolute top-0 h-full w-full md:hidden"></div>
       <div class="flex h-full max-w-7xl flex-col justify-between">
         <!-- NAVBAR START -->
         <div class="w-full">
-          <nav class="inline-flex w-full justify-between">
+          <nav class="inline-flex w-full items-center justify-between">
             <h3 class="inline-flex items-center gap-2 text-xl font-bold">
               <Feather />
                FeatherOne
             </h3>
-            <ul class="inline-flex gap-10 text-lg">
+            <!-- MENU START -->
+            <span
+              id="menuButton"
+              class="relative z-30 cursor-pointer text-3xl active:scale-95 md:hidden"
+            >
+              <ThreeLineMenu id="menuIcon" />
+              <X id="closeIcon" class="hidden" />
+            </span>
+            <!-- RESPONSIVE VIEW MENU START -->
+            <div
+              id="responsiveMenu"
+              class="absolute left-0 top-0 z-10 h-full w-full bg-black transition-transform duration-500 ease-in-out md:hidden"
+            >
+              <ul class="space-y-6 px-10 pt-32 text-2xl uppercase">
+                {navLinks.map((n) => <li class="navLinks">{n}</li>)}
+              </ul>
+            </div>
+            <!-- RESPONSIVE VIEW MENU END -->
+            <ul class="hidden gap-10 text-lg md:inline-flex">
               {
                 navLinks.map((n) => (
                   <li class="group relative flex flex-col overflow-hidden">
                     <a href="#">{n}</a>
                     <span
                       id="link-uderline"
-                      class="absolute bottom-0 left-0 w-full -translate-x-full border-[1px] border-t border-black transition-transform duration-500 after:content-[''] group-hover:translate-x-0"
+                      class="absolute bottom-0 left-0 w-full -translate-x-full border-[1px] border-t border-white transition-transform duration-500 after:content-[''] group-hover:translate-x-0"
                     />
                   </li>
                 ))
               }
             </ul>
+            <!-- MENU END -->
           </nav>
         </div>
         <!-- NAVBAR END -->
         <!-- BODY TEXT START -->
         <div class="grid-cols-2 md:grid">
           <div class="space-y-4">
-            <h1 class="text-2xl font-extrabold md:text-5xl">
+            <h1 class="text-4xl font-extrabold md:text-5xl">
               Where Dreams Find Flight, We Come In.
             </h1>
-            <p class="text-sm md:text-lg">
+            <p class="text-lg">
               Where Dreams Take Wing. Explore limitless skies, Embrace boundless
               possibilities. Let aspirations soar high
             </p>
           </div>
-          <div class="hidden items-end justify-end md:inline-flex">
+          <div
+            class="mt-10 flex flex-col items-end justify-end md:mt-0 md:inline-flex"
+          >
             <span class="rounded-full bg-white p-3 text-black">
               <ChevronRight />
             </span>
@@ -62,3 +86,24 @@ const navLinks = ["Home", "Post", "About", "Contact"];
     </div>
   </div>
 </BaseLayout>
+<script>
+  function toggleIconShow() {
+    document.getElementById("menuIcon")?.classList.toggle("hidden");
+    document.getElementById("closeIcon")?.classList.toggle("hidden");
+  }
+  function toggleMenu() {
+    const navMenu = document.getElementById("responsiveMenu")?.classList;
+
+    if (navMenu?.contains("-translate-y-full")) {
+      navMenu.remove("-translate-y-full");
+      toggleIconShow();
+    } else {
+      navMenu?.add("-translate-y-full");
+      toggleIconShow();
+    }
+  }
+
+  document.getElementById("menuButton")?.addEventListener("click", () => {
+    toggleMenu();
+  });
+</script>

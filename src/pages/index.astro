@@ -1,22 +1,11 @@
 ---
-
+import BaseLayout from "@layouts/BaseLayout.astro";
+import Navbar from "@components/home/Navbar.astro";
+import ChevronRight from "@components/icons/ChevronRight.astro";
 ---
 
-<html lang="en">
-  <head>
-    <meta charset="utf-8" />
-    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-    <meta name="viewport" content="width=device-width" />
-    <meta name="generator" content={Astro.generator} />
-    <title>Astro</title>
-  </head>
-  <body class="bg-zinc-900">
-    <div class="flex min-h-screen w-full items-center justify-center">
-      <div id="box" class="h-32 w-32 rounded-xl bg-pink-400"></div>
-    </div>
-  </body>
-  <script>
-    import { gsap } from "gsap";
-    gsap.fromTo("#box", { x: "-100%", rotate: 0 }, { x: 0, rotate: 90 });
-  </script>
-</html>
+<BaseLayout>
+  <div class="flex flex-col items-center justify-center">
+    <h1>My web dev projects</h1>
+  </div>
+</BaseLayout>

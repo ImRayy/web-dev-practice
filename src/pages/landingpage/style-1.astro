@@ -1,0 +1,64 @@
+---
+import ChevronRight from "@components/icons/ChevronRight.astro";
+import Feather from "@components/icons/Feather.astro";
+import BaseLayout from "@layouts/BaseLayout.astro";
+const navLinks = ["Home", "Post", "About", "Contact"];
+---
+
+<BaseLayout>
+  <div
+    class="flex w-full flex-col justify-between"
+    style={{
+      background:
+        "url(https://images.unsplash.com/photo-1701930873267-79a7a8730e70?q=80&w=1170&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D) no-repeat center center/cover",
+    }}
+  >
+    <div
+      class="flex h-full justify-center bg-black/40 px-16 py-16 text-white backdrop-blur-3xl"
+    >
+      <div class="flex h-full max-w-7xl flex-col justify-between">
+        <!-- NAVBAR START -->
+        <div class="w-full">
+          <nav class="inline-flex w-full justify-between">
+            <h3 class="inline-flex items-center gap-2 text-xl font-bold">
+              <Feather />
+               FeatherOne
+            </h3>
+            <ul class="inline-flex gap-10 text-lg">
+              {
+                navLinks.map((n) => (
+                  <li class="group relative flex flex-col overflow-hidden">
+                    <a href="#">{n}</a>
+                    <span
+                      id="link-uderline"
+                      class="absolute bottom-0 left-0 w-full -translate-x-full border-[1px] border-t border-black transition-transform duration-500 after:content-[''] group-hover:translate-x-0"
+                    />
+                  </li>
+                ))
+              }
+            </ul>
+          </nav>
+        </div>
+        <!-- NAVBAR END -->
+        <!-- BODY TEXT START -->
+        <div class="grid-cols-2 md:grid">
+          <div class="space-y-4">
+            <h1 class="text-2xl font-extrabold md:text-5xl">
+              Where Dreams Find Flight, We Come In.
+            </h1>
+            <p class="text-sm md:text-lg">
+              Where Dreams Take Wing. Explore limitless skies, Embrace boundless
+              possibilities. Let aspirations soar high
+            </p>
+          </div>
+          <div class="hidden items-end justify-end md:inline-flex">
+            <span class="rounded-full bg-white p-3 text-black">
+              <ChevronRight />
+            </span>
+          </div>
+        </div>
+        <!-- BODY TEXT END -->
+      </div>
+    </div>
+  </div>
+</BaseLayout>

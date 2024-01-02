@@ -9,7 +9,7 @@ const navLinks = ["Home", "Post", "About", "Contact"];
 
 <BaseLayout>
   <div
-    class="flex w-full flex-col justify-between"
+    class="flex w-full flex-col justify-between overflow-hidden"
     style={{
       background:
         "url(https://images.unsplash.com/photo-1701930873267-79a7a8730e70?q=80&w=1170&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D) no-repeat center center/cover",
@@ -30,7 +30,7 @@ const navLinks = ["Home", "Post", "About", "Contact"];
             <!-- MENU START -->
             <span
               id="menuButton"
-              class="relative z-30 cursor-pointer text-3xl active:scale-95 md:hidden"
+              class="relative z-30 cursor-pointer rounded-full text-3xl active:scale-95 md:hidden"
             >
               <ThreeLineMenu id="menuIcon" />
               <X id="closeIcon" class="hidden" />
@@ -38,10 +38,18 @@ const navLinks = ["Home", "Post", "About", "Contact"];
             <!-- RESPONSIVE VIEW MENU START -->
             <div
               id="responsiveMenu"
-              class="absolute left-0 top-0 z-10 h-full w-full -translate-y-full bg-black transition-transform duration-500 ease-in-out md:hidden"
+              class="absolute right-0 top-0 z-10 h-full w-96 translate-x-full bg-[#230F16] md:hidden"
             >
-              <ul class="space-y-6 px-10 pt-32 text-2xl uppercase">
-                {navLinks.map((n) => <li class="navLinks">{n}</li>)}
+              <ul
+                class="space-y-6 px-10 pt-32 text-4xl font-extrabold uppercase"
+              >
+                {
+                  navLinks.map((n) => (
+                    <li class="h-10 w-full overflow-hidden text-end">
+                      <p class="navLinks translate-y-full">{n}</p>
+                    </li>
+                  ))
+                }
               </ul>
             </div>
             <!-- RESPONSIVE VIEW MENU END -->
@@ -52,7 +60,7 @@ const navLinks = ["Home", "Post", "About", "Contact"];
                     <a href="#">{n}</a>
                     <span
                       id="link-uderline"
-                      class="absolute bottom-0 left-0 w-full -translate-x-full border-[1px] border-t border-white transition-transform duration-500 after:content-[''] group-hover:translate-x-0"
+                      class="absolute bottom-0 right-0 w-full translate-x-full border-[1px] border-t border-white transition-transform duration-500 after:content-[''] group-hover:translate-x-0"
                     />
                   </li>
                 ))
@@ -88,28 +96,26 @@ const navLinks = ["Home", "Post", "About", "Contact"];
 </BaseLayout>
 <script>
   import { gsap } from "gsap";
-  function toggleIconShow() {
-    document.getElementById("menuIcon")?.classList.toggle("hidden");
-    document.getElementById("closeIcon")?.classList.toggle("hidden");
-  }
-  function toggleMenu() {
-    const navMenu = document.getElementById("responsiveMenu")?.classList;
 
-    if (navMenu?.contains("-translate-y-full")) {
-      navMenu.remove("-translate-y-full");
-      toggleIconShow();
-    } else {
-      navMenu?.add("-translate-y-full");
-      toggleIconShow();
-    }
-  }
+  const menuIcon = document.getElementById("menuIcon")?.classList;
+  const closeIcon = document.getElementById("closeIcon")?.classList;
+  const sidebar = document.getElementById("responsiveMenu");
+
+  const tl = gsap.timeline({ paused: true });
+  tl.to(sidebar, { translateX: 0, duration: 0.4 }).to(".navLinks", {
+    translateY: 0,
+    duration: 0.4,
+  });
 
   document.getElementById("menuButton")?.addEventListener("click", () => {
-    toggleMenu();
-    gsap.fromTo(
-      ".navLinks",
-      { translateX: "-100%", duration: 0.6 },
-      { translateX: 0, duration: 0.6 }
-    );
+    if (closeIcon?.contains("hidden")) {
+      closeIcon.remove("hidden");
+      menuIcon?.add("hidden");
+      tl.play();
+    } else {
+      closeIcon?.add("hidden");
+      menuIcon?.remove("hidden");
+      tl.reverse();
+    }
   });
 </script>

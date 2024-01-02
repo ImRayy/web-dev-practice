@@ -103,4 +103,11 @@ import { images } from "@utils/imageLinks";
 
   // animate(
   gsap.fromTo(".card", { x: "-100%", duration: 0.8 }, { x: 0, duration: 0.8 });
+
+  const setHeight = () => {
+    const currentHeight = window.innerHeight;
+    document.body.style.height = `${currentHeight}px`;
+  };
+  window.addEventListener("resize", setHeight);
+  setHeight();
 </script>

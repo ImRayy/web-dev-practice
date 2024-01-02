@@ -1,9 +1,18 @@
 ---
 import BaseLayout from "@layouts/BaseLayout.astro";
+import { projects } from "@utils/projectLinks";
 ---
 
 <BaseLayout>
-  <div class="flex flex-col items-center justify-center">
-    <h1>My web dev projects</h1>
+  <div class="flex w-full flex-col items-center bg-black">
+    <div class="my-20 flex h-full max-w-3xl flex-col gap-20">
+      {
+        projects.map((p) => (
+          <a href={p.url}>
+            <img src={p.thumbnail} alt="landingpage/style-1" />
+          </a>
+        ))
+      }
+    </div>
   </div>
 </BaseLayout>

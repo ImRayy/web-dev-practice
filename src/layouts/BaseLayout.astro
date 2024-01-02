@@ -5,14 +5,6 @@ export interface Props {
 const { title = "Ray's Hold" } = Astro.props;
 ---
 
-<!-- <style>
-  html {
-    height: -webkit-fll-available;
-  }
-  body {
-    height: -webkit-fill-available;
-  }
-</style> -->
 <html
   lang="en"
   class={`scroll-pt-10 scroll-smooth select-none`}
@@ -29,12 +21,4 @@ const { title = "Ray's Hold" } = Astro.props;
       <slot />
     </main>
   </body>
-  <script>
-    const setHeight = () => {
-      const currentHeight = window.innerHeight;
-      document.body.style.height = `${currentHeight}px`;
-    };
-    window.addEventListener("resize", setHeight);
-    setHeight();
-  </script>
 </html>
